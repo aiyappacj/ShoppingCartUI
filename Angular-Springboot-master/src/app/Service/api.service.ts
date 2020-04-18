@@ -5,6 +5,7 @@ import { Product } from '../Model/product';
 import { User } from '../Model/user';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { Address } from '../Model/address';
+import { Item } from '../Model/Item';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ApiService {
   private REG_API = "http://localhost:8087/user/signup";
   private LOGU_API = "http://localhost:8087/user/verify";
   private LOGA_API = "http://localhost:8087/admin/verify";
-  private PRDLST_API = "http://localhost:8087/user/getProducts";
+  private PRDLST_API = "http://localhost:8087/admin/getItems";
   private ADD_CART_API = "http://localhost:8087/user/addToCart?productId=";
   private VW_CART_API = "http://localhost:8087/user/viewCart";
   private UP_CART_API = "http://localhost:8087/user/updateCart";
@@ -112,18 +113,26 @@ export class ApiService {
 
   // Add product for Logged AdminUser
 
-  addProduct(auth: string, desc: string,
-    quan: string, price: string, prodname: string, image: File): Observable<any> {
+  addProduct(auth: string, itemname: string,description: string,quantity: string,
+    price: string,address: string,emailaddress: string,phonenumber: string,
+    freebie: string,image: File
+    ): Observable<any> {
+
 
     const formData: FormData = new FormData();
-    formData.append("description", desc);
-    formData.append("price", price);
-    formData.append("productname", prodname);
-    formData.append("quantity", quan);
-    formData.append("file", image);
+    formData.append('description', description);
+    formData.append('itemname', itemname);
+    formData.append('price', price);
+    formData.append('quantity', quantity);
 
+    formData.append('address', address);
+    formData.append('emailaddress', emailaddress);
+    formData.append('phonenumber', phonenumber);
+    formData.append('freebie', freebie);
+    formData.append('file', image);
+    
     const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-    return this.http.post<any>(this.ADD_PRD_API, formData, { headers: myheader });
+    return this.http.post<any>(this.ADD_PRD_API,formData, { headers: myheader });
 
   }
 

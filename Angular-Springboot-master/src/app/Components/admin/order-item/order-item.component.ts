@@ -12,6 +12,7 @@ export class OrderItemComponent implements OnInit {
 
   auth: string;
   orderlist: any[] = [];
+  itemlist: any[] = [];
   constructor(private route: Router, private api: ApiService) { }
 
   ngOnInit() {
@@ -40,8 +41,8 @@ export class OrderItemComponent implements OnInit {
   }
 
   getOrderList() {
-    this.api.getOrders(this.auth).subscribe(res => {
-      this.orderlist = res.orderlist;
+    this.api.getProducts(this.auth).subscribe(res => {
+      this.itemlist = res.oblist;
     });
   }
 

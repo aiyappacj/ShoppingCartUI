@@ -6,28 +6,46 @@
                         <button class="mybtn btn btn-secondary" (click)="hide()" *ngIf="showAdd">Click to hide</button>
                 </div>
         </div>
-        <form class="form-horizontal shadow p-3 mb-5 bg-white rounded " #f="ngForm" (ngSubmit)="f.form.valid && addProd(desc,quan,price,prodname,image)"
+        <form class="form-horizontal shadow p-3 mb-5 bg-white rounded " #f="ngForm" (ngSubmit)="f.form.valid && addProd(itemname,description,quantity,price,address,emailaddress,phonenumber,freebie,image)"
                 *ngIf="showAdd">
                 <div class="row">
                         <div class="col-6">
                                 <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Product Name" #prodname
-                                                ngModel name="prodname">
+                                        <input type="text" class="form-control" placeholder="Item Name" #itemname
+                                                ngModel name="itemname">
                                 </div>
                                 <div class="form-group">
-                                        <textarea type="text" class="form-control" placeholder="description" name="desc"
-                                                #desc ngModel rows="5"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="description" name="description"
+                                                #description ngModel rows="5"></textarea>
                                 </div>
                                 <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="quantity" name="quan" #quan
+                                        <input type="text" class="form-control" placeholder="quantity" name="quantity" #quantity
                                                 ngModel>
                                 </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control" placeholder="price" name="price" #price
                                                 ngModel>
                                 </div>
+
                                 <div class="form-group">
-                                        <input type="file" class="form-control" placeholder="Product Picture" #image
+                                        <input type="text" class="form-control" placeholder="Home Address" #address
+                                                ngModel name="address">
+                                </div>
+                                <div class="form-group">
+                                        <textarea type="text" class="form-control" placeholder="Email Address" name="emailaddress"
+                                                #emailaddress ngModel rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Phone Number" name="phonenumber" #phonenumber
+                                                ngModel>
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="FreeBie" name="freebie" #freebie
+                                                ngModel>
+                                </div>
+
+                                <div class="form-group">
+                                        <input type="file" class="form-control" placeholder="Item Picture" #image
                                                 accept="image/*" name="image"
                                                 (change)="handleFileInput($event.target.files)">
                                 </div>
@@ -47,21 +65,21 @@
         </form>
         <hr>
         <div class="row">
-                <div class="col-3 align-left" *ngFor="let product of products">
+                <div class="col-3 align-left" *ngFor="let product of items">
                         <div class="card shadow p-3 mb-5 bg-white rounded">
                                 <div class="card-body">
                                         <h5 class="card-title">{{product.productname}}</h5>
-                                        <img src="data:image/png;base64,{{product.productimage}}" class="img-responsive"
+                                        <img src="data:image/png;base64,{{product.itemname}}" class="img-responsive"
                                                 height="150px" width="200px" alt="Image">
                                         <p class="card-text"> {{product.description}}</p>
-                                        <input type="hidden" value={{product.productid}} #prdid>
+                                        <input type="hidden" value={{product.itemid}} #itemid>
                                         <div class="row">
                                                 <div class="col-6">
-                                                        <button class="btn btn-secondary" (click)="edit(prdid)">Edit</button>
+                                                        <button class="btn btn-secondary" (click)="edit(itemid)">Edit</button>
                                                 </div>
                                                 <div class="col-6">
                                                         <button class="btn btn-danger"
-                                                                (click)="delProd(prdid)">Remove</button>
+                                                                (click)="delProd(itemid)">Remove</button>
                                                 </div>
                                         </div>
                                 </div>

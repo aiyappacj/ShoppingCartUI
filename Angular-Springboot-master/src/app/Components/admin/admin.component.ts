@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Service/api.service';
 import { Product } from 'src/app/Model/product';
+import { Item } from 'src/app/Model/Item';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { NavigationExtras, Router } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
@@ -15,6 +16,7 @@ export class AdminComponent implements OnInit {
   fileToUpload: File = null;
   showAdd = false;
   auth: string;
+  items: Item[] = [];
   constructor(private api: ApiService, private router: Router) { }
   imageUrl: string = "/assets/img/noimage.png";
   ngOnInit() {
@@ -22,7 +24,7 @@ export class AdminComponent implements OnInit {
       this.auth = this.api.getToken();
       this.api.getProducts(this.auth).subscribe(
         res => {
-          this.products = res.oblist;
+          this.items = res.oblist;
         }
       );
     }
@@ -41,8 +43,11 @@ export class AdminComponent implements OnInit {
   hide() {
     this.showAdd = false;
   }
-  addProd(desc, quan, price, prodname, image) {
-    this.api.addProduct(this.auth, desc.value, quan.value, price.value, prodname.value, this.fileToUpload).subscribe(res => {
+  addProd(itemname,description,quantity,price,address,emailaddress,phonenumber,freebie,image) {
+    
+    this.api.addProduct(this.auth,itemname.value,description.value,
+      quantity.value,price.value,address.value,emailaddress.value,
+      phonenumber.value,freebie.value, this.fileToUpload).subscribe(res => {
       this.products = res.oblist;
     });
   }
