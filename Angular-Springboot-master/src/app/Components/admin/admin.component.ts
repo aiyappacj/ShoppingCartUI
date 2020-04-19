@@ -43,13 +43,13 @@ export class AdminComponent implements OnInit {
   hide() {
     this.showAdd = false;
   }
-  addProd(itemname,description,quantity,price,address,emailaddress,phonenumber,freebie,image) {
+  addProd(itemname,emailaddress,phonenumber,freebie,image,description,address) {
     
-    this.api.addProduct(this.auth,itemname.value,description.value,
-      quantity.value,price.value,address.value,emailaddress.value,
+    this.api.addProduct(this.auth,itemname.value,description.value,address.value,emailaddress.value,
       phonenumber.value,freebie.value, this.fileToUpload).subscribe(res => {
       this.products = res.oblist;
     });
+    this.router.navigate(['/admin/order']);
   }
   delProd(prodid) {
 

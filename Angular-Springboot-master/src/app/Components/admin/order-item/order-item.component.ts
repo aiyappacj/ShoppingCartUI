@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/Service/api.service';
 import { Order } from 'src/app/Model/Order';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'order-item',
@@ -17,6 +18,7 @@ export class OrderItemComponent implements OnInit {
 
   ngOnInit() {
     this.auth = this.api.getToken();
+    
     this.getOrderList();
   }
 

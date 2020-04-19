@@ -1,29 +1,29 @@
 <app-navigation></app-navigation>
 <div class="container">
-    <br>
-    <div class="row">
-        <div class="col-6 align-left" *ngFor="let order of itemlist">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="card-title"><b>Item Name:</b> {{order.itemname}}</p>
-                            <p class="card-text"><b>Home Address:</b> {{order.address}}</p>
-                            <p class="card-title"><b>Contact Email Address:</b> {{order.emailaddress}}</p>
-                            <p class="card-text"><b>Contact Number:</b> {{order.phonenumber}}</p>
-                            <p class="card-title"><b>FreeBie:</b> {{order.freebie}}</p>
-                            
-                        </div>
-
-                        <!--<div class="col-6">
-                            <button class="btn btn-secondary" (click)="approve(order.orderId)">Approve</button>
-                            <button style="margin-left: 10px;" class="btn btn-secondary" (click)="decline(order.orderId)">Decline</button>
-                        </div>-->
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Vendor Name</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Contact Number</th>
+      <th>Item Image</th>
+      <th>FreeBie</th>
+    </tr>
+</thead>
+    <tbody>
+    <tr *ngFor="let order of itemlist">
+      <td >{{order.itemid}}</td>
+      <td>{{order.itemname}}</td>
+      <td>{{order.description}}</td>
+      <td>{{order.address}}</td>
+      <td>{{order.emailaddress}}</td>
+      <td>{{order.phonenumber}}</td>
+      <td><img [src]="order.itemimage"></td>
+      <td>{{order.freebie}}</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>

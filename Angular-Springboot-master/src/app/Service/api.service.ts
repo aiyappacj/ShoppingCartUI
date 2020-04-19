@@ -113,8 +113,7 @@ export class ApiService {
 
   // Add product for Logged AdminUser
 
-  addProduct(auth: string, itemname: string,description: string,quantity: string,
-    price: string,address: string,emailaddress: string,phonenumber: string,
+  addProduct(auth: string, itemname: string,description: string,address: string,emailaddress: string,phonenumber: string,
     freebie: string,image: File
     ): Observable<any> {
 
@@ -122,9 +121,7 @@ export class ApiService {
     const formData: FormData = new FormData();
     formData.append('description', description);
     formData.append('itemname', itemname);
-    formData.append('price', price);
-    formData.append('quantity', quantity);
-
+    
     formData.append('address', address);
     formData.append('emailaddress', emailaddress);
     formData.append('phonenumber', phonenumber);
