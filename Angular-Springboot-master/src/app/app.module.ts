@@ -19,6 +19,9 @@ import { CartItemComponent } from './Components/home/cart-item/cart-item.compone
 import { AddressComponent } from './Components/home/address/address.component';
 import { EditItemComponent } from './Components/admin/edit-item/edit-item.component';
 import { OrderItemComponent } from './Components/admin/order-item/order-item.component';
+import { SearchItemComponent } from './Components/admin/search-item/search-item.component';
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 const appRoutes:Routes=[
   { path: '',
     redirectTo: '/login',
@@ -61,6 +64,11 @@ const appRoutes:Routes=[
   path:'admin/order',
   component: OrderItemComponent,
   canActivate:[AuthguardGuard]
+},
+{
+  path:'admin/search',
+  component: SearchItemComponent,
+  canActivate:[AuthguardGuard]
 }
 ];
 
@@ -76,10 +84,12 @@ const appRoutes:Routes=[
     AddressComponent,
     AdminComponent,
     EditItemComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    SearchItemComponent
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     RouterModule,
     HttpClientModule,
     StorageServiceModule,

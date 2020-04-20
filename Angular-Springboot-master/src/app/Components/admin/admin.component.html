@@ -48,20 +48,22 @@
                               <label for="description">
                                 <span>Description</span>
                                 <textarea type="text" class="form-control" id="description" placeholder="description" name="description"
-                                                                            #description ngModel rows="2"></textarea>
+                                                                            #description ngModel rows="4" cols="3"></textarea>
                               </label>
+                              
                               <label for="homeaddress">
                                 <span>Home Address</span>
                                 <textarea type="text" id="homeaddress" class="form-control" placeholder="Home Address" #address
-                                                                            ngModel name="address" rows="2"></textarea>
+                                                                            ngModel name="address" rows="4" cols="3"></textarea>
                               </label>
                               
                 </div>
                 <div class="col-6">
                         <h4 class="text-center">Image preview</h4>
-                        <img [src]="imageUrl" style="width:400px;height: 300px;">
+                        <img [src]="imageUrl" style="width:100px;height: 100px;">
 
                 </div>
+                
                 <div class="row">
                         <div class="col-6">
                                 <input type="submit" class=" btn btn-primary" value="Add">

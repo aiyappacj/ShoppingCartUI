@@ -49,7 +49,8 @@ export class AdminComponent implements OnInit {
       phonenumber.value,freebie.value, this.fileToUpload).subscribe(res => {
       this.products = res.oblist;
     });
-    this.router.navigate(['/admin/order']);
+    this.showAdd = false;
+    this.router.navigate(['/admin']);
   }
   delProd(prodid) {
 

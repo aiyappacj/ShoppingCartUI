@@ -1,11 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Product } from '../Model/product';
 import { User } from '../Model/user';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { Address } from '../Model/address';
 import { Item } from '../Model/Item';
+import {catchError,map,tap} from 'rxjs/operators';
+import { PageClient } from '../Model/PageClient';
 
 @Injectable({
   providedIn: 'root'
@@ -202,6 +204,41 @@ export class ApiService {
   removeToken() {
     this.storage.remove("auth_type");
     return this.storage.remove("auth_token");
+  }
+
+
+  //private url = 'http://localhost:8087/admin/clients';
+
+  private urlPage = 'http://localhost:8087/admin/clients/get?page=';
+
+  
+
+ getPageClient(page:number, auth:string): Observable<PageClient>{
+  const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
+  var url = this.urlPage;
+  url=url+page + "&size=6";
+  return this.http.get<PageClient>(url,{ headers: myheader })
+  .pipe(
+    map(response => {
+      const data = response;
+      console.log(data.content);
+      return data ;
+    }));
+}
+  
+  
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+   
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+   
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+   
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 
 }

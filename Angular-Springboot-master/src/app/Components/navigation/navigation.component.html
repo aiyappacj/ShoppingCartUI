@@ -34,10 +34,13 @@
       <div class="ml-auto" *ngSwitchCase="'admin'">
         <ul class="navbar-nav mt-2 mt-lg-0 ">
           <li class="nav-item">
-            <a class=" nav-link" routerLink="/admin">Add Items</a>
+            <a class=" nav-link" routerLink="/admin">Add Post</a>
           </li>
           <li class="nav-item">
-            <a class=" nav-link" routerLink="/admin/order">Item Details</a>
+            <a class=" nav-link" routerLink="/admin/order">All Post</a>
+          </li>
+          <li class="nav-item">
+            <a class=" nav-link" routerLink="/admin/search">Search Post</a>
           </li>
           <li class="nav-item">
             <a class=" nav-link" (click)="logout()" style="cursor: pointer;">Log out</a>

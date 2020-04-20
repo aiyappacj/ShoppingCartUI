@@ -1,29 +1,27 @@
 <app-navigation></app-navigation>
 <div class="container">
-<table class="table table-striped">
+  <table class="table table-striped">
     <thead>
-    <tr>
-      <th>Id</th>
-      <th>Vendor Name</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Contact Number</th>
-      <th>Item Image</th>
-      <th>FreeBie</th>
-    </tr>
-</thead>
-    <tbody>
-    <tr *ngFor="let order of itemlist">
-      <td >{{order.itemid}}</td>
-      <td>{{order.itemname}}</td>
-      <td>{{order.description}}</td>
-      <td>{{order.address}}</td>
-      <td>{{order.emailaddress}}</td>
-      <td>{{order.phonenumber}}</td>
-      <td><img [src]="order.itemimage"></td>
-      <td>{{order.freebie}}</td>
-    </tr>
+      <tr>
+          <th>Id</th>
+          <th>Vendor Name</th>
+          <th>Description</th>
+          <th>Address</th>
+          <th>Email</th>
+          <th>Contact Number</th>
+          <th>FreeBie</th>
+      </tr>
+    </thead>
+    <tbody  >
+      <tr *ngFor="let client of itemlist">
+          <td >{{client.itemid}}</td>
+          <td>{{client.itemname}}</td>
+          <td>{{client.description}}</td>
+          <td>{{client.address}}</td>
+          <td>{{client.emailaddress}}</td>
+          <td>{{client.phonenumber}}</td>
+          <td>{{client.freebie}}</td>
+      </tr>
     </tbody>
   </table>
   </div>
