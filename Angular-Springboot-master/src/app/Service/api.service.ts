@@ -189,6 +189,13 @@ export class ApiService {
     this.storage.set("auth_type", auth_type);
   }
 
+  storeUser(key: string, value: string) {
+    console.log('Story key as  '+key);
+    this.storage.set(key, value);
+    console.log('After storage '+this.storage.get(key));
+    
+  }
+
   getAuthType(): string {
     if (this.storage.get("auth_type") !== null) {
       return this.storage.get("auth_type");
@@ -201,8 +208,13 @@ export class ApiService {
     return this.storage.get("auth_token");
   }
 
+  getEmail() {
+    return this.storage.get("email");
+  }
+
   removeToken() {
     this.storage.remove("auth_type");
+    this.storage.remove("email");
     return this.storage.remove("auth_token");
   }
 

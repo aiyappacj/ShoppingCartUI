@@ -16,12 +16,15 @@ export class AdminComponent implements OnInit {
   fileToUpload: File = null;
   showAdd = false;
   auth: string;
+  email: string;
   items: Item[] = [];
   constructor(private api: ApiService, private router: Router) { }
   imageUrl: string = "/assets/img/noimage.png";
   ngOnInit() {
     if (this.api.isAuthenticated) {
       this.auth = this.api.getToken();
+      this.email = this.api.getEmail();
+      console.log('Email id is'+this.email);
       this.api.getProducts(this.auth).subscribe(
         res => {
           this.items = res.oblist;

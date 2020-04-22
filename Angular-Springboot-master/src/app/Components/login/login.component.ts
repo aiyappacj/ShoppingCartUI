@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
             subscribe(res => {
               if (res.status == "200") {
                 this.apiService.storeToken(res.auth_TOKEN, "admin");
+                this.apiService.storeUser("email", this.loginForm.value.email);
                 this.router.navigate(['/admin']);
               } else {
                 this.router.navigate(['/login']);

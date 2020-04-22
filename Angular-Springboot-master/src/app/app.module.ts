@@ -22,6 +22,7 @@ import { OrderItemComponent } from './Components/admin/order-item/order-item.com
 import { SearchItemComponent } from './Components/admin/search-item/search-item.component';
 // search module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ChatBoxComponent } from './Components/admin/chat-box/chat-box.component';
 const appRoutes:Routes=[
   { path: '',
     redirectTo: '/login',
@@ -66,6 +67,11 @@ const appRoutes:Routes=[
   canActivate:[AuthguardGuard]
 },
 {
+  path:'admin/chat',
+  component: ChatBoxComponent,
+  canActivate:[AuthguardGuard]
+},
+{
   path:'admin/search',
   component: SearchItemComponent,
   canActivate:[AuthguardGuard]
@@ -85,7 +91,8 @@ const appRoutes:Routes=[
     AdminComponent,
     EditItemComponent,
     OrderItemComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    ChatBoxComponent
   ],
   imports: [
     BrowserModule,
